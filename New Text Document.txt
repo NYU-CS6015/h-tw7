@@ -1,0 +1,8 @@
+git clone https://github.com/laravel/homestead.git Homestead
+composer create-project --prefer-dist laravel/laravel Laravel
+git remote add origin git@github.com:NYU-CS6015/h-tw7.git
+
+in ~/hackathon/, type composer install
+edit config/app.php: change the debug to be true.
+cp .env.example .env
+php artisan key:generate
