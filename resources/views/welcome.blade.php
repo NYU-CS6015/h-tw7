@@ -1,45 +1,36 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Laravel</title>
+@extends('layouts.app')
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-
-        <style>
-            html, body {
-                height: 100%;
-            }
-
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
-
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
-
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 96px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Team 7</div>
-            </div>
+@section('content')
+<div class="container">
+    <div class="row" id="timeline">
+        <div class="col-md-4">
+            <form action="#" v-on:submit="postStatus">
+                <div class="form-group">
+                    <textarea class="form-control" rows="5" placeholder="What are you upto?" maxlength="140" required v-model="post"></textarea>
+                </div>
+                <input type="submit" value="Post" class="form-control">
+            </form>
         </div>
-    </body>
-</html>
+        <div class="col-md-8">
+            <p v-if="!posts.length">No posts to see here yet. Follow someone and make it happen.</p>
+            <div class="posts" v-if="posts.length">
+                <div class="media" v-for="post in posts" track-by="id" transition="expand">
+                    <div class="media-left">
+                        <img class="media-object" v-bind:src="post.user.avatar">
+                    </div>
+                    <div class="media-body">
+                        <div class="user">
+                            <a href="@{{ post.user.profileUrl }}"><strong>@{{ post.user.username }}</strong></a> - @{{ post.humanCreatedAt }}
+                        </div>
+                        <p>@{{ post.body }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <a href="#" class="btn btn-primary" v-if="total > posts.length" v-on:click="getMorePosts($event)">Show more</a>
+        </div>
+    </div>
+</div>
+@endsection
