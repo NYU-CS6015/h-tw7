@@ -13,7 +13,7 @@
             </form>
         </div>
         <div class="col-md-8">
-            <p v-if="!posts.length">No posts to see here yet. Follow someone and make it happen.</p>
+            <p v-if="!posts.length">No Post here. Try to follow someone.</p>
             <div class="posts" v-if="posts.length">
                 <div class="media" v-for="post in posts" track-by="id" transition="expand">
                     <div class="media-left">
@@ -30,7 +30,7 @@
 
             <hr>
 
-            <a href="#" class="btn btn-primary" v-if="total > posts.length" v-on:click="getMorePosts($event)">Show more</a>
+            <a href="#" class="btn btn-primary" v-if="total > posts.length" v-on:click="getMorePosts($event)">Show more information</a>
         </div>
     </div>
 </div>
@@ -39,7 +39,7 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">Welcome</div>
+                <div class="panel-heading">Welcome!</div>
 
                 <div class="panel-body">
                     Your Application's Landing Page.
