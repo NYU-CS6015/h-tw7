@@ -19,6 +19,4 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
-Route::auth();
-
-Route::get('/home', 'HomeController@index');
+Route::get('{name}', array('as' => 'profile', 'uses' => 'UserController@showProfile'));
