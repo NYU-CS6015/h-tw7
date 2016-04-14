@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', function () { return view('welcome'); });
 
 Route::group(['middleware' => ['web']], function () {
     Route::auth();
@@ -21,7 +19,7 @@ Route::group(['middleware' => ['web']], function () {
 
 Route::group(['middleware' => ['web', 'auth']], function () {
     Route::get('/', 'TimelineController@index');
-
+    Route::get('/home', 'TimelineController@index');
     Route::get('/posts', 'PostController@index');
     Route::post('/posts', 'PostController@create');
 
